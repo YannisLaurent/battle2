@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.humanbooster</groupId>
+	<artifactId>battle2</artifactId>
+
+	<!-- Nous souhaitons développer une application web -->
+	<!-- Dans l'univers Java, l'application web se matérialise par un fichier 
+		.war -->
+	<!-- Pour cette raison, la balise 'packaging' va contenir war -->
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>battle2 Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- La balise 'properties' regroupe toutes les versions des dépendances 
+		du projet -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mysql.connector.version>5.1.42</mysql.connector.version>
+		<jstl.version>1.2</jstl.version>
+	</properties>
+	<!-- La balise 'build' permet de préciser la version du jdk -->
+	<!-- Pour rappel, on sera toujours en dernière version de Java -->
+	<build>
+
+		<!-- La balise 'finalName' permet de donner un nom au war qui sera généré 
+			par Maven -->
+		<finalName>battle2</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Pour ce projet, nous avons besoin de communiquer avec une base mysql -->
+		<!-- Cette communication est assurée par le jdbc 'connector/j' -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+
+		<!-- Notre application web repose sur des servlets -->
+		<!-- Toutes nos servlets héritent de la classe 'HttpServlet' qui se trouve 
+			dans le package 'javax.servlet.api' -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<!-- Nos jsp vont utiliser un ensemble de balises regroupées sous l'appellation 
+			'jstl' = 'jsp standard tag library' permettant d'alléger le code de la jsp -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+	</dependencies>
+</project>
